@@ -2,6 +2,6 @@
 module.exports = class Data {
     constructor() { }
     static getAllUser() {
-        return "SELECT * FROM PUBLIC.user;"
+        return 'SELECT id, name, designation FROM  users'
     }
 }
