@@ -8,9 +8,15 @@ const dbConfig = require("../config/db.config");
 
 let client = new cassandra.Client({
     contactPoints: ["localhost"],
-    keyspace: "np_users_db",
+    keyspace: "meity_chat",
     localDataCenter: "datacenter1",
 });
+
+client.on('log', function (level, className, message, furtherInfo) {
+    console.log('log event: %s -- %s', level, message);
+});
+
+client.connect().then(() => console.log('Cassandra DB Connected!'));
 
 module.exports.createUser = async (req, res) => {
     let qResult;
